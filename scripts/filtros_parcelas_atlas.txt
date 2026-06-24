@@ -1,0 +1,75 @@
+Filtros para generación de cédulas y mapas por parcela agrícola
+================================================================
+
+Objetivo: Definir los filtros de la capa de parcelas para generar
+cédulas y mapas por parcela, diferenciando parcelas sin asociadas
+(Formato 01) y aquellas con asociadas (Formato 02).
+
+
+Parcelas totales por sector (el 100% a entregar):
+-------------------------------------------------
+
+"sector" = 'Zona Sur'
+
+
+Formato 01:
+Para obtener parcelas que NO TIENEN asociadas
+
+"sector" = 'Zona Sur'
+AND "tiene_parcelas_asociadas" = false
+
+
+Formato 02:
+Para obtener parcelas que TIENEN asociadas
+
+"sector" = 'Zona Sur'
+AND "tiene_parcelas_asociadas" = true
+
+
+Nota: La suma de Formato 01 y Formato 02 debe coincidir con el
+total de parcelas en cada sector; cualquier diferencia indica
+inconsistencias a revisar.
+
+
+================================================================
+Filtros combinados con estado del cultivo
+================================================================
+
+Parcelas activas de un sector:
+
+"sector" = 'Zona Sur'
+AND "estado" = 'Activo'
+
+
+Formato 01 — activas sin asociadas:
+
+"sector" = 'Zona Sur'
+AND "estado" = 'Activo'
+AND "tiene_parcelas_asociadas" = false
+
+
+Formato 02 — activas con asociadas:
+
+"sector" = 'Zona Sur'
+AND "estado" = 'Activo'
+AND "tiene_parcelas_asociadas" = true
+
+
+================================================================
+Sectores disponibles
+================================================================
+
+Sustituir 'Zona Sur' por cualquiera de los siguientes:
+
+  'Zona Norte'
+  'Zona Sur'
+  'Zona Oriente'
+  'Zona Poniente'
+  'Zona Centro'
+
+
+Estados disponibles:
+
+  'Activo'
+  'En descanso'
+  'Cosechado'
